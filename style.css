@@ -1,3 +1,19 @@
 *{
 	background-color: lightgray;
 }
+
+#container{
+	display: flex;
+	justify-content: center;
+}
+
+.row{
+	background-color: white;
+	width:  2em;
+	height: 2em;
+	border: 1px solid black;
+}
+
+.row:hover{
+	background-color: black;
+}
