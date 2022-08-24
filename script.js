@@ -1,6 +1,7 @@
 const container = document.querySelector("#container");
 const btn = document.querySelector(".button");
 
+btn.addEventListener("click", deleteGrid);
 btn.addEventListener("click", newGrid);
 
 function createGrid(){
@@ -37,6 +38,11 @@ function newGrid(){
 	        column.appendChild(row);
 	    }
 	}   
+}
+
+function deleteGrid(){
+    const container = document.querySelector("#container");
+    container.remove();
 }
 
 createGrid();
