@@ -1,10 +1,10 @@
 const container = document.querySelector("#container");
-const btn = document.querySelector(".button");
+const btn = document.querySelector("button");
 
 btn.addEventListener("click", deleteGrid);
 btn.addEventListener("click", newGrid);
 
-function createGrid(){
+function defaultGrid(){
 	for(let i=0; i<4; i++){
 		const column = document.createElement("div");
 		column.className = "column";
@@ -45,4 +45,4 @@ function deleteGrid(){
     container.remove();
 }
 
-createGrid();
+defaultGrid();
