@@ -1,43 +1,59 @@
 const container = document.querySelector("#container");
-const btn = document.querySelector("button");
+const clear = document.querySelector(".btn2");
+const nGrid = document.querySelector(".btn1");
 
-btn.addEventListener("click", deleteGrid);
-btn.addEventListener("click", newGrid);
+nGrid.addEventListener("click", deleteGrid);
+nGrid.addEventListener("click", newGrid);
 
-function defaultGrid(){
-	for(let i=0; i<4; i++){
-		const column = document.createElement("div");
-		column.className = "column";
-		container.appendChild(column);
 
-		for(let j=0; j<4; j++){
-			const row = document.createElement("div");
-			row.className = "row";
-			column.appendChild(row);
-		}
-	}
+function grid(){
+    for(let i=0; i<16; i++){
+        let row = document.createElement("div");
+        row.className = "row";
+        container.appendChild(row);
+    
+        for(let j=0; j<16; j++){
+            let column = document.createElement("div");
+            column.className = "column";
+            row.appendChild(column);
+            column.addEventListener("mousemove", ()=> column.style.backgroundColor = "blue");
+            
+            clear.addEventListener("click", ()=> column.style.backgroundColor = "white");
+        }
+    }
+    
 }
 
 function newGrid(){
-	let col = prompt("col");
-	let row =  prompt("row");
+    
+    const div = document.createElement("div");
+    div.setAttribute("id", "container")
+    document.body.appendChild(div);
+    const container = document.querySelector("#container");
 
-	const div = document.createElement("div");
-	div.setAttribute("id", "container")
-	document.body.appendChild(div);
-	const newContainer = document.querySelector("#container");
+    let num = prompt("number");
 
-	for(let i=0; i<col; i++) {
-	    const column = document.createElement("div");
-	    column.className = "column";
-	    newContainer.appendChild(column);
+    if(num > 100){
+        alert("That Number is too big");
+    }
 
-	    for(let j=0; j<row; j++){
-	        const row = document.createElement("div");
-	        row.className =  "row";
-	        column.appendChild(row);
-	    }
-	}   
+    else {
+        for(let i=0; i<num; i++){
+            let row = document.createElement("div");
+            row.className = "row";
+            container.appendChild(row);
+    
+            for(let j=0; j<num; j++){
+                let column = document.createElement("div");
+                column.className = "column";
+                row.appendChild(column);
+                column.addEventListener("mousemove", ()=> column.style.backgroundColor = "blue");
+                
+                clear.addEventListener("click", ()=> column.style.backgroundColor = "white");
+            }
+        }
+    }
+
 }
 
 function deleteGrid(){
@@ -45,4 +61,4 @@ function deleteGrid(){
     container.remove();
 }
 
-defaultGrid();
+grid();
